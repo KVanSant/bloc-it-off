@@ -12,11 +12,12 @@
     <script src="/app.js"></script>
   </head>
   <body>
-    <div ng-controller='Task.controller' >
-      <h2>{{ subText }}</h2>
-      <ul ng-repeat="task in tasks">
-        <li>{{ task }}</li>
-      </ul>
+    <div ng-controller="Task.controller">
+      <h1>Current Tasks</h1>
+      <input>
+        <ul>
+          <li ng-repeat="task in taskList"></li>
+        </ul>
     </div>
     <div ui-view></div>
   </body>
