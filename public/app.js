@@ -2,12 +2,17 @@ blocitoff = angular.module("Blocitoff", ["firebase"]);
 
 
 blocitoff.controller('Task.controller', ['$scope', '$firebase', function($scope, $firebase) {
-  var ref = new Firebase("https://sweltering-heat-4642.firebaseio.com");
+  var ref = new Firebase("https://sweltering-heat-4642.firebaseio.com/tasks");
   var sync = $firebase(ref);
 
-  $scope.taskList = sync.$asArray();
+//Sync task list as array
+  $scope.tasks = sync.$asArray();
 
-  $scope.addTask = function(){};
+//add task and add to firebase
+  $scope.addTask = function(task){
+    $scope.tasks.$add({task: task});
+  };
+
 
   }]);
 
