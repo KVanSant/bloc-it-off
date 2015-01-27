@@ -12,7 +12,5 @@ blocitoff.controller('Task.controller', ['$scope', '$firebase', function($scope,
   $scope.addTask = function(task){
     $scope.tasks.$add({task: task});
   };
-
-
   }]);
 
