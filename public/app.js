@@ -8,9 +8,11 @@ blocitoff.controller('Task.controller', ['$scope', '$firebase', function($scope,
 //Sync task list as array
   $scope.tasks = sync.$asArray();
 
+
 //add task and add to firebase
   $scope.addTask = function(task){
     $scope.tasks.$add({task: task});
-  };
+    $scope.newTaskItem = "";
+   };
   }]);
 
