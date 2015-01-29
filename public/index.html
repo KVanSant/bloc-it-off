@@ -12,16 +12,7 @@
     <script src="/app.js"></script>
   </head>
   <body>
-    <div ng-controller="Task.controller">
-      <h1>Current Tasks</h1>
-      <form ng-submit="addTask(newTaskItem)">
-        <input ng-model="newTaskItem">
-        <button type="submit">add task</button>
-      </form>
-        <ul>
-          <li ng-repeat="task in tasks">{{task.task}}</li>
-        </ul>
-    </div>
+  <h1>Blocitoff</h1>     
     <div ui-view></div>
   </body>
 </html>

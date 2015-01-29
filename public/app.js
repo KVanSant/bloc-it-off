@@ -1,7 +1,16 @@
-blocitoff = angular.module("Blocitoff", ["firebase"]);
+blocitoff = angular.module('Blocitoff', ['firebase', 'ui.router']);
+
+blocitoff.config(['$stateProvider', function($stateProvider) {
+
+  $stateProvider.state('home', {
+    url: '/',
+    controller: 'Home.controller',
+    templateURL: '/templates/home.html'
+  });
+}]);
 
 
-blocitoff.controller('Task.controller', ['$scope', '$firebase', function($scope, $firebase) {
+blocitoff.controller('Home.controller', ['$scope', '$firebase', function($scope, $firebase) {
   var ref = new Firebase("https://sweltering-heat-4642.firebaseio.com/tasks");
   var sync = $firebase(ref);
 
