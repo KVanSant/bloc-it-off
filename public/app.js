@@ -1,11 +1,12 @@
 blocitoff = angular.module('Blocitoff', ['firebase', 'ui.router']);
 
-blocitoff.config(['$stateProvider', function($stateProvider) {
+blocitoff.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
+  $locationProvider.html5Mode(true);
 
   $stateProvider.state('home', {
     url: '/',
     controller: 'Home.controller',
-    templateURL: '/templates/home.html'
+    templateUrl: '/templates/home.html'
   });
 }]);
 
