@@ -12,7 +12,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>  
     <script src="/app.js"></script>
   </head>
-  <body>
+  <body class="centered">
+    <nav >
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="">My Tasks</a></li>
+        <li role="presentation"><a href="#">Completed Tasks</a></li>
+        <li role="presentation"><a href="">Expired Tasks</a></li>
+      </ul>
+    </nav>
     <div ui-view></div>
   </body>
 </html>

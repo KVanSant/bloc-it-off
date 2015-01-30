@@ -8,6 +8,7 @@ blocitoff.config(['$stateProvider', '$locationProvider', function($stateProvider
     controller: 'Home.controller',
     templateUrl: '/templates/home.html'
   });
+
 }]);
 
 
@@ -21,8 +22,11 @@ blocitoff.controller('Home.controller', ['$scope', '$firebase', function($scope,
 
 //add task and add to firebase
   $scope.addTask = function(task){
+  
     $scope.tasks.$add({task: task});
+
     $scope.newTaskItem = "";
-   };
-  }]);
+  };
+
+}]);
 
