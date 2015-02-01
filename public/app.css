@@ -5,10 +5,10 @@
   transform: translate(-50%, -50%);
 }
 
-.checkbox {
-  float: right;
+li {
+  margin-top: 20px;       
 }
 
-#button {
+.checkbox {
   float: right;
 }
