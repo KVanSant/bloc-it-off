@@ -28,5 +28,12 @@ blocitoff.controller('Home.controller', ['$scope', '$firebase', function($scope,
     $scope.newTaskItem = "";
   };
 
+
+
+
+
+  
+
 }]);
+
 

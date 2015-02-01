@@ -8,7 +8,7 @@
     </form>
    <div ng-repeat="task in tasks">
     <ul class="list-group"> 
-      <li class="list-group-item">{{task.task}}<input type="checkbox" class="checkbox"></li>
+      <li class="list-group-item" ng-show="!checked">{{task.task}}<input type="checkbox" class="checkbox" ng-model="checked"></li>
     </ul>
    </div> 
 </div>
