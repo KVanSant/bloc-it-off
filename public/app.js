@@ -34,13 +34,13 @@ blocitoff.controller('Active.controller', ['$scope', '$firebase',  function($sco
  $scope.tasks = tasks;
 
 
-//add task and add to firebase
+//add a new task to the list
   $scope.addTask = function(task){ 
     $scope.tasks.$add({task: task, state: "active", dateAdded: Firebase.ServerValue.TIMESTAMP });
     $scope.newTaskItem = "";
   };
 
-
+//complete a task and save it
   $scope.completeTask = function(taskId) {
     var task = tasks.$getRecord(taskId);
     task.state = "complete";
@@ -53,9 +53,16 @@ blocitoff.controller('Completed.controller', ['$scope', '$firebase', function($s
   var ref = new Firebase("https://sweltering-heat-4642.firebaseio.com/tasks");
   var sync = $firebase(ref);
 
-  //Sync task list as array
+
  var tasks = sync.$asArray();
  $scope.tasks = tasks;
+
+//undo complete state and save back to active
+$scope.undoComplete = function(taskId) {
+    var task = tasks.$getRecord(taskId);
+    task.state = "active";
+    tasks.$save(task);
+  };
 
 }]);
 
@@ -64,7 +71,6 @@ blocitoff.controller('Expired.controller', ['$scope', '$firebase', function($sco
   var ref = new Firebase("https://sweltering-heat-4642.firebaseio.com/tasks");
   var sync = $firebase(ref);
 
-//Sync task list as array
  var tasks = sync.$asArray();
  $scope.tasks = tasks;
 
