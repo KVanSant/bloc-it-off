@@ -1,8 +1,14 @@
 <div>
-  <h1>Task History</h1>
-  <div>
-    <ul>
-      <li ng-repeat="task in tasks">{{task.task}}</li> <!--show expired tasks-->
+  <h3>Expired Tasks</h3>
+   <div ng-repeat="task in tasks">
+    <ul class="list-group"> 
+      <li class="list-group-item" ng-show="task.state == 'expired'">
+        {{task.task}}
+        <input type="checkbox" class="checkbox" ></li>
     </ul>
-  </div>
+   </div> 
 </div>
+
+
+
+
