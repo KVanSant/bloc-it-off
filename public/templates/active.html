@@ -6,9 +6,9 @@
       </div>          
       <button type="submit" class="btn btn-default">add</button>   
     </form>
-   <div ng-repeat="task in tasks" >
+   <div ng-repeat="task in tasks">
     <ul class="list-group"> 
-      <li class="list-group-item"  ng-show="task.state == 'active'">
+      <li class="list-group-item"  ng-show="task.state == 'active'" ng-init="expireTask(task.$id)">
         {{task.task}} 
         <input type="checkbox" class="checkbox" ng-click="completeTask(task.$id)">
       </li>

@@ -36,7 +36,11 @@ blocitoff.controller('Active.controller', ['$scope', '$firebase',  function($sco
 
 //add a new task to the list
   $scope.addTask = function(task){ 
-    $scope.tasks.$add({task: task, state: "active", dateAdded: Firebase.ServerValue.TIMESTAMP });
+    $scope.tasks.$add({
+      task: task, 
+      state: "active", 
+      dateAdded: Firebase.ServerValue.TIMESTAMP 
+    });
     $scope.newTaskItem = "";
   };
 
@@ -46,6 +50,19 @@ blocitoff.controller('Active.controller', ['$scope', '$firebase',  function($sco
     task.state = "complete";
     tasks.$save(task);
   };
+
+
+  $scope.expireTask = function(taskId) {
+    var today = new Date()
+    var now = today.getTime();
+    var task = tasks.$getRecord(taskId);
+    console.log(now);
+    if (now - task.dateAdded >= 300000) {   
+      task.state = "expired";
+      tasks.$save(task);
+    }
+  };
+
 
 }]);
 
@@ -63,6 +80,8 @@ $scope.undoComplete = function(taskId) {
     task.state = "active";
     tasks.$save(task);
   };
+
+
 
 }]);
 
