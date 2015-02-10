@@ -8,7 +8,7 @@
     </form>
    <div ng-repeat="task in tasks">
     <ul> 
-      <li class="todo" ng-show="task.state == 'active'">
+      <li class="todo" ng-show="task.state == 'active'" ng-init="expireTask(task.$id)">
         {{task.task}} 
         <button class="button check"  ng-click="completeTask(task.$id)"></button>
       </li>

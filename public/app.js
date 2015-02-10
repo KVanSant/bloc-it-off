@@ -21,7 +21,6 @@ blocitoff.config(['$stateProvider', '$locationProvider', function($stateProvider
     controller: 'Expired.controller',
     templateUrl: '/templates/expired.html'
   })
-
 }]);
 
 
@@ -51,20 +50,19 @@ blocitoff.controller('Active.controller', ['$scope', '$firebase',  function($sco
     tasks.$save(task);
   };
 
-
+//expire task after 7 days
   $scope.expireTask = function(taskId) {
+    var task = tasks.$getRecord(taskId);
     var today = new Date()
     var now = today.getTime();
-    var task = tasks.$getRecord(taskId);
-    if (now - task.dateAdded >= 300000) {   
+    var days = 24 * 60 * 60 * 1000 // hours * minutes * seconds * milliseconds
+    if (task.state == "active" && (now - task.dateAdded) >= (7 * days)){   
         task.state = "expired";
         tasks.$save(task);
-      
     }
   };
-
-
 }]);
+
 
 blocitoff.controller('Completed.controller', ['$scope', '$firebase', function($scope, $firebase) {
   var ref = new Firebase("https://sweltering-heat-4642.firebaseio.com/tasks");
@@ -73,16 +71,6 @@ blocitoff.controller('Completed.controller', ['$scope', '$firebase', function($s
 
  var tasks = sync.$asArray();
  $scope.tasks = tasks;
-
-//undo complete state and save back to active
-$scope.undoComplete = function(taskId) {
-    var task = tasks.$getRecord(taskId);
-    task.state = "active";
-    tasks.$save(task);
-  };
-
-
-
 }]);
 
 
@@ -92,7 +80,6 @@ blocitoff.controller('Expired.controller', ['$scope', '$firebase', function($sco
 
  var tasks = sync.$asArray();
  $scope.tasks = tasks;
-
 }]);
 
 
