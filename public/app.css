@@ -5,10 +5,41 @@
   transform: translate(-50%, -50%);
 }
 
-li {
-  margin-top: 20px;       
+.todo {
+  margin-top: 20px;     
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+ 
+}
+
+.button {
+  float: right;
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  border: none;
+  background-color: #F0F0F0;
+
+}
+.todo .button:hover {
+  background-color: #D0D0D0; 
+}
+
+.check:hover:after {
+   content: "✔";
 }
 
 .checkbox {
   float: right;
+}
+
+.expired {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.completed {
+  
 }

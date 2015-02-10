@@ -4,7 +4,8 @@
     <ul class="list-group"> 
       <li class="list-group-item" ng-show="task.state == 'complete'">
         {{task.task}}
-        <input type="checkbox" class="checkbox" ng-click='undoComplete(task.$id)'></li>
+        <button class="button completed">&#10004</button>
+      </li>
     </ul>
    </div> 
 </div>

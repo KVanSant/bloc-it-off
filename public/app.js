@@ -57,8 +57,9 @@ blocitoff.controller('Active.controller', ['$scope', '$firebase',  function($sco
     var now = today.getTime();
     var task = tasks.$getRecord(taskId);
     if (now - task.dateAdded >= 300000) {   
-      task.state = "expired";
-      tasks.$save(task);
+        task.state = "expired";
+        tasks.$save(task);
+      
     }
   };
 
