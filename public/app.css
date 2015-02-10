@@ -42,11 +42,13 @@
 
 .expired {
   color: red;
+  background-color: #D0D0D0;
   font-size: 18px;
   font-weight: bold;
   cursor: default;
 }
 
 .completed {
+  background-color: #D0D0D0;
   cursor: default;
 }
