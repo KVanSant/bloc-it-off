@@ -20,8 +20,14 @@
   border-radius: 15px;
   border: none;
   background-color: #F0F0F0;
+  background
 
 }
+
+.button:focus {
+  outline-style: none;
+}
+
 .todo .button:hover {
   background-color: #D0D0D0; 
 }
@@ -38,8 +44,9 @@
   color: red;
   font-size: 18px;
   font-weight: bold;
+  cursor: default;
 }
 
 .completed {
-  
+  cursor: default;
 }
