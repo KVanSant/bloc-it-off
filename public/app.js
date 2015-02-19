@@ -24,8 +24,13 @@ blocitoff.config(['$stateProvider', '$locationProvider', function($stateProvider
 }]);
 
 
-blocitoff.controller('Active.controller', ['$scope', 'FirebseRef',  function($scope, FirebseRef) {
-  $scope.tasks = FirebseRef.all;
+blocitoff.controller('Active.controller', ['$scope', '$firebase',  function($scope, $firebase) {
+  var ref = new Firebase("https://sweltering-heat-4642.firebaseio.com/tasks");
+  var sync = $firebase(ref);
+
+//Sync task list as array
+ var tasks = sync.$asArray();
+ $scope.tasks = tasks;
 
 
 //add a new task to the list
@@ -59,26 +64,24 @@ blocitoff.controller('Active.controller', ['$scope', 'FirebseRef',  function($sc
 }]);
 
 
-blocitoff.controller('Completed.controller', ['$scope', 'FirebseRef', function($scope, FirebseRef) {
-  $scope.tasks = FirebseRef.all;
+blocitoff.controller('Completed.controller', ['$scope', '$firebase', function($scope, $firebase) {
+  var ref = new Firebase("https://sweltering-heat-4642.firebaseio.com/tasks");
+  var sync = $firebase(ref);
 
+
+ var tasks = sync.$asArray();
+ $scope.tasks = tasks;
 }]);
 
 
-blocitoff.controller('Expired.controller', ['$scope', 'FirebseRef', function($scope, FirebseRef) {
-  $scope.tasks = FirebseRef.all;
-
+blocitoff.controller('Expired.controller', ['$scope', '$firebase', 'FirebseRef', function($scope, $firebase, FirebseRef) {
+ $scope.tasks = tasks;
 }]);
-
 
 blocitoff.factory('FirebseRef', ['$firebase', function($firebase) {
   var ref = new Firebase("https://sweltering-heat-4642.firebaseio.com/tasks");
   var sync = $firebase(ref);
   var tasks = sync.$asArray();
-
-  return {
-    all: tasks
-  };
 
 }]);
 
