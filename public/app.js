@@ -74,14 +74,21 @@ blocitoff.controller('Completed.controller', ['$scope', '$firebase', function($s
 }]);
 
 
-blocitoff.controller('Expired.controller', ['$scope', '$firebase', 'FirebseRef', function($scope, $firebase, FirebseRef) {
+blocitoff.controller('Expired.controller', ['$scope', '$firebase',  function($scope, $firebase) {
+  var ref = new Firebase("https://sweltering-heat-4642.firebaseio.com/tasks");
+  var sync = $firebase(ref);
+
+
+ var tasks = sync.$asArray();
  $scope.tasks = tasks;
 }]);
 
-blocitoff.factory('FirebseRef', ['$firebase', function($firebase) {
-  var ref = new Firebase("https://sweltering-heat-4642.firebaseio.com/tasks");
-  var sync = $firebase(ref);
-  var tasks = sync.$asArray();
 
-}]);
+
+//blocitoff.factory('FirebseRef', ['$firebase', function($firebase) {
+//  var ref = new Firebase("https://sweltering-heat-4642.firebaseio.com/tasks");
+//  var sync = $firebase(ref);
+//  var tasks = sync.$asArray();
+
+//}]);
 
